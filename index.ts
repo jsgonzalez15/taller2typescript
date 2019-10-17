@@ -19,7 +19,7 @@ function renderCoursesInTable(courses: Course[]): void {
   courses.forEach((course) => {
     let trElement = document.createElement("tr");
     trElement.innerHTML = `<td>${course.name}</td>
-                           <td>${course.professor}</td>
+                           <td>${course.teacher}</td>
                            <td>${course.credits}</td>`;
     coursesTbody.appendChild(trElement);
   });
