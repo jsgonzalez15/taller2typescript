@@ -50,9 +50,9 @@ function applyFilterByName() {
 }
 
 function applyFilterByCourseRange() {
-  let text = inputSearchBox["value"];
+  let number = inputSearchBox["value"];
   clearCoursesInTable();
-  let coursesFiltered: Course[] = searchCourseByName(text, dataCourses);
+  let coursesFiltered: Course[] = searchCourseByRange(number, dataCourses);
   renderCoursesInTable(coursesFiltered);
 }
 
@@ -60,8 +60,8 @@ function searchCourseByName(nameKey: string, courses: Course[]) {
   return nameKey === '' ? dataCourses : courses.filter((course) => course.name.includes(nameKey));
 }
 
-function searchCourseByRange(nameKey:string, credits: number, courses: Course[]) {
-  return nameKey === '' ? dataCourses : courses.filter((course) => course.credits < credits);
+function searchCourseByRange( credits: number, courses: Course[]) {
+  return credits === 0 ? dataCourses : courses.filter((course) => course.credits < credits);
 }
 
 
