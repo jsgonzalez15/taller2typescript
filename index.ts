@@ -11,6 +11,7 @@ const studentsTbody: HTMLElement = document.getElementById('infoStudent');
 const btnfilterByName: HTMLElement = document.getElementById("button-filterByName");
 const btnfilterByCredits: HTMLElement = document.getElementById("button-filterByCreditos");
 const inputSearchBox: HTMLElement = document.getElementById("search-box");
+const inputSearchBox2: HTMLElement = document.getElementById("search-box2");
 const totalCreditElm: HTMLElement = document.getElementById("total-credits");
 
 btnfilterByName.onclick = () => applyFilterByName();
@@ -50,9 +51,10 @@ function applyFilterByName() {
 }
 
 function applyFilterByCourseRange() {
-  let number = inputSearchBox["value"];
+  let number = inputSearchBox2["value"];
+  let text = inputSearchBox2["value"];
   clearCoursesInTable();
-  let coursesFiltered: Course[] = searchCourseByRange(number, dataCourses);
+  let coursesFiltered: Course[] = searchCourseByRange(text,number, dataCourses);
   renderCoursesInTable(coursesFiltered);
 }
 
@@ -60,8 +62,8 @@ function searchCourseByName(nameKey: string, courses: Course[]) {
   return nameKey === '' ? dataCourses : courses.filter((course) => course.name.includes(nameKey));
 }
 
-function searchCourseByRange( credits: number, courses: Course[]) {
-  return credits === 0 ? dataCourses : courses.filter((course) => course.credits < credits);
+function searchCourseByRange( nameKey: string,credits: number, courses: Course[]) {
+  return nameKey === '' ? dataCourses : courses.filter((course) => course.credits < credits);
 }
 
 
