@@ -14,6 +14,7 @@ const totalCreditElm: HTMLElement = document.getElementById("total-credits");
 
 btnfilterByName.onclick = () => applyFilterByName();
 renderCoursesInTable(dataCourses);
+renderStudentsInTable(dataStudent);
 totalCreditElm.innerHTML = `${getTotalCredits(dataCourses)}`
 
 
@@ -30,14 +31,14 @@ function renderCoursesInTable(courses: Course[]): void {
 
 function renderStudentsInTable(Student: Student): void {
   
-    let trElement = document.createElement("tr");
-    trElement.innerHTML = `<td>${Student.name}</td>
+    let trElement2 = document.createElement("tr");
+    trElement2.innerHTML = `<td>${Student.name}</td>
                            <td>${Student.code}</td>
                            <td>${Student.cardId}</td>
                            <td>${Student.age}</td>
                            <td>${Student.address}</td>
                            <td>${Student.phone}</td>`;
-    studentsTbody.appendChild(trElement);
+    studentsTbody.appendChild(trElement2);
 }
 function applyFilterByName() {
   let text = inputSearchBox["value"];

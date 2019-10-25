@@ -3,7 +3,6 @@ import { Course} from './course';
 export class Student{
 
   name: string;
-  avatar:string;
   code: number;
   cardId: number;
   age: number;
