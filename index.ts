@@ -9,10 +9,12 @@ import { Student } from './Student';
 const coursesTbody: HTMLElement = document.getElementById('courses');
 const studentsTbody: HTMLElement = document.getElementById('infoStudent');
 const btnfilterByName: HTMLElement = document.getElementById("button-filterByName");
+const btnfilterByCredits: HTMLElement = document.getElementById("button-filterByCreditos");
 const inputSearchBox: HTMLElement = document.getElementById("search-box");
 const totalCreditElm: HTMLElement = document.getElementById("total-credits");
 
 btnfilterByName.onclick = () => applyFilterByName();
+btnfilterByCredits.onclick = () => applyFilterByCourseRange();
 renderCoursesInTable(dataCourses);
 renderStudentsInTable(dataStudent);
 totalCreditElm.innerHTML = `${getTotalCredits(dataCourses)}`
@@ -47,8 +49,19 @@ function applyFilterByName() {
   renderCoursesInTable(coursesFiltered);
 }
 
+function applyFilterByCourseRange() {
+  let text = inputSearchBox["value"];
+  clearCoursesInTable();
+  let coursesFiltered: Course[] = searchCourseByName(text, dataCourses);
+  renderCoursesInTable(coursesFiltered);
+}
+
 function searchCourseByName(nameKey: string, courses: Course[]) {
   return nameKey === '' ? dataCourses : courses.filter((course) => course.name.includes(nameKey));
+}
+
+function searchCourseByRange(nameKey:string, credits: number, courses: Course[]) {
+  return nameKey === '' ? dataCourses : courses.filter((course) => course.credits < credits);
 }
 
 
