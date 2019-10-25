@@ -1,10 +1,13 @@
 // Import stylesheets
 import './style.css';
 import { dataCourses } from './dataCourses';
-import { Course } from './course';
+import { dataStudent } from './dataStudent';
+import { Course } from './Course';
+import { Student } from './Student';
 
 
 const coursesTbody: HTMLElement = document.getElementById('courses');
+const studentsTbody: HTMLElement = document.getElementById('infoStudent');
 const btnfilterByName: HTMLElement = document.getElementById("button-filterByName");
 const inputSearchBox: HTMLElement = document.getElementById("search-box");
 const totalCreditElm: HTMLElement = document.getElementById("total-credits");
@@ -19,13 +22,24 @@ function renderCoursesInTable(courses: Course[]): void {
   courses.forEach((course) => {
     let trElement = document.createElement("tr");
     trElement.innerHTML = `<td>${course.name}</td>
-                           <td>${course.teacher}</td>
+                           <td>${course.teacher.name + ' '+ course.teacher.numOffice}</td>
                            <td>${course.credits}</td>`;
     coursesTbody.appendChild(trElement);
   });
 }
 
-
+function renderStudentsInTable(courses: Course[]): void {
+  courses.forEach((course) => {
+    let trElement = document.createElement("tr");
+    trElement.innerHTML = `<td>${Student.name}</td>
+                           <td>${Student.code}</td>
+                           <td>${Student.cardId}</td>
+                           <td>${Student.age}</td>
+                           <td>${Student.address}</td>
+                           <td>${Student.phone}</td>`;
+    studentsTbody.appendChild(trElement);
+  });
+}
 function applyFilterByName() {
   let text = inputSearchBox["value"];
   clearCoursesInTable();

@@ -2,7 +2,7 @@ import { Course} from './course';
 
 export class Student{
 
-  completeName: string;
+  name: string;
   avatar:string;
   code: number;
   cardId: number;
@@ -11,10 +11,13 @@ export class Student{
   phone:string;
   currentCourses:Course[];
 
-  constructor(completeName: string,code: number, cardId: number  ) {
-        this.completeName = completeName;
+  constructor(name: string,code: number, cardId: number,age:number,address:string,phone:string ) {
+        this.name = name;
         this.code = code;
         this.cardId = cardId;
+        this.age = age;
+        this.address = address;
+        this.phone = phone;
     }
 
 }
