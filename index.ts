@@ -28,8 +28,8 @@ function renderCoursesInTable(courses: Course[]): void {
   });
 }
 
-function renderStudentsInTable(courses: Course[]): void {
-  courses.forEach((course) => {
+function renderStudentsInTable(Student: Student): void {
+  
     let trElement = document.createElement("tr");
     trElement.innerHTML = `<td>${Student.name}</td>
                            <td>${Student.code}</td>
@@ -38,7 +38,6 @@ function renderStudentsInTable(courses: Course[]): void {
                            <td>${Student.address}</td>
                            <td>${Student.phone}</td>`;
     studentsTbody.appendChild(trElement);
-  });
 }
 function applyFilterByName() {
   let text = inputSearchBox["value"];
